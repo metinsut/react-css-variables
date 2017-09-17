@@ -1,0 +1,34 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgba(236, 240, 241,1.0);
+    display: flex;
+    justify-content: center;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+.image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(241, 196, 15,1.0);
+    padding: 50px;
+    filter: blur(5px);
+}
+
+.controls > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
