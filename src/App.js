@@ -7,16 +7,19 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      spacing: '10',
-      blur: '10',
+      spacing: '20',
+      blur: '5',
       color: '#f1c40f',
     };
   }
 
-  componentDidMount() {
-    // this.Input.value = this.state.spacing;
+
+  componentDidUpdate(prevProps, prevState) {
+    this.img.style.setProperty("padding", this.state.spacing + "px");
+    this.img.style.setProperty("filter", "blur("+this.state.blur+"px)");
+    this.img.style.setProperty("background-color", this.state.color);
     console.log('====================================');
-    console.log(this.img);
+    console.log(this.state.color);
     console.log('====================================');
   }
 
@@ -27,22 +30,34 @@ class App extends Component {
     });
   }
 
+  changeBlur(e) {
+    this.setState({
+      blur: e.target.value,
+    });
+  }
+
+  changeColor(e) {
+    this.setState({
+      color: e.target.value,
+    });
+  }
+
   render() {
     return (
       <div className="App">
         <h1>Update CSS Variables</h1>
         <div className="controls">
-          <div className="spacing" ref='a' >
+          <div className="spacing">
             <label htmlFor="spacing">Spacing:</label>
             <input type="range" className="spacing" name="spacing" min="10" max="200" defaultValue={this.state.spacing} onChange={(e) => this.changeSpaceing(e)} />
           </div>
           <div className="blur">
             <label htmlFor="blur">Blur:</label>
-            <input type="range" className="blur" name="blur" min="0" max="25" defaultValue={this.state.blur} />
+            <input type="range" className="blur" name="blur" min="0" max="25" defaultValue={this.state.blur} onChange={(e) => this.changeBlur(e)} />
           </div>
           <div className="color">
             <label htmlFor="base">Base Color:</label>
-            <input type="color" className="color" name="base" defaultValue={this.state.color} />
+            <input type="color" className="color" name="base" defaultValue={this.state.color} onChange={(e) => this.changeColor(e)} />
           </div>
         </div>
         <div className="image" ref={(el) => { this.img = el; }}>
