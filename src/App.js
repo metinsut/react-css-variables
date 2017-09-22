@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import image from './Assets/Images/img_forest.jpg';
-
 
 class App extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -13,16 +10,11 @@ class App extends Component {
     };
   }
 
-
   componentDidUpdate(prevProps, prevState) {
-    this.img.style.setProperty("padding", this.state.spacing + "px");
-    this.img.style.setProperty("filter", "blur("+this.state.blur+"px)");
-    this.img.style.setProperty("background-color", this.state.color);
-    console.log('====================================');
-    console.log(this.state.color);
-    console.log('====================================');
+    this.img.style.setProperty('padding', `${this.state.spacing}px`);
+    this.img.style.setProperty('filter', `blur( ${this.state.blur}px)`);
+    this.img.style.setProperty('background-color', this.state.color);
   }
-
 
   changeSpaceing(e) {
     this.setState({
@@ -61,7 +53,7 @@ class App extends Component {
           </div>
         </div>
         <div className="image" ref={(el) => { this.img = el; }}>
-          <img src={image} alt="forest_image" />
+          <img src="/Images/img_forest.jpg" alt="forest_image" />
         </div>
       </div>
     );
